@@ -1,9 +1,8 @@
 package cl.sustantiva.sttdemo.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,6 +11,7 @@ public class Customer {
 
     @Id
     @Column(name = "customer_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
     @Column(name = "store_id")
     private Integer storeId;
@@ -23,8 +23,9 @@ public class Customer {
     @Column(name="address_id")
     private Integer addressId;
     private Boolean active;
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
+   /* @Column(name = "create_date")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private LocalDateTime createDate;*/
 
     public Integer getCustomerId() {
         return customerId;
@@ -66,14 +67,14 @@ public class Customer {
         this.active = active;
     }
 
-    public LocalDateTime getCreateDate() {
+  /*  public LocalDateTime getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
-
+*/
     public Integer getStoreId() {
         return storeId;
     }
@@ -88,5 +89,19 @@ public class Customer {
 
     public void setAddressId(Integer addressId) {
         this.addressId = addressId;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", storeId=" + storeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", addressId=" + addressId +
+                ", active=" + active +
+                //", createDate=" + createDate +
+                '}';
     }
 }

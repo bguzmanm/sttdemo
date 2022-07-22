@@ -17,35 +17,28 @@
     </header>
     <main>
         <form th:action="@{/customer/save}" method="post" th:object="${customer}">
-            <div class="mb-3">
-                <label for="customerId" class="form-label">Id</label>
-                <input type="number" class="form-control" id="customerId" name="customerId" readonly
-                       th:value="${customer.getCustomerId()}">
-            </div>
+            <!--<input type="hidden" class="form-control" id="customerId" name="customerId">-->
+
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Kevin"
-                       th:value="${customer.getFirstName()}">
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Kevin">
             </div>
             <div class="mb-3">
                 <label for="lastName" class="form-label">Apellido</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Gonzalez"
-                       th:value="${customer.getLastName()}">
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Gonzalez">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="kevin@gonzalez.com"
-                       th:value="${customer.getEmail()}">
+                <input type="email" class="form-control" id="email" name="email" placeholder="kevin@gonzalez.com">
             </div>
             <div class="row mb-3">
                 <label for="active" class="col-sm-10 col-form-label">Activo</label>
                 <div class="col-sm-2">
-                    <input type="checkbox" class="form-check-input" id="active" name="active"
-                           th:checked="${customer.isActive()}">
+                    <input type="checkbox" class="form-check-input" id="active" name="active">
                 </div>
             </div>
-            <input type="hidden" id="addressId" name="addressId" th:value="${customer.getAddressId()}">
-            <input type="hidden" id="storeId" name="storeId" th:value="${customer.getStoreId()}">
+            <input type="hidden" id="addressId" name="addressId" value="1">
+            <input type="hidden" id="storeId" name="storeId" value="1">
 <!--            <div class="mb-3">-->
 <!--                <label for="createDate" class="form-label">Creación</label>-->
 <!--                <input type="date" class="form-control" id="createDate" name="createDate"-->
