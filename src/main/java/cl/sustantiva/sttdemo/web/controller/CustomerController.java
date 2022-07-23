@@ -4,7 +4,6 @@ import cl.sustantiva.sttdemo.domain.service.CustomerService;
 import cl.sustantiva.sttdemo.persistence.entity.Customer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,11 @@ public class CustomerController {
 
     @GetMapping("/{customerId}")
     public String getCustomerById(@PathVariable("customerId") int customerId, Model model){
-        model.addAttribute("customer", service.getOne(customerId).get());
+        try {
+            model.addAttribute("customer", service.getOne(customerId).get());
+        } catch (Exception e){
+            logger.error(e.toString());
+        }
         return "customer";
     }
 

@@ -1,9 +1,7 @@
 package cl.sustantiva.sttdemo.persistence.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name="customer")
@@ -13,15 +11,21 @@ public class Customer {
     @Column(name = "customer_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
-    @Column(name = "store_id")
-    private Integer storeId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id", insertable = false, updatable = false)
+    private Store store;
+
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
     private String email;
-    @Column(name="address_id")
-    private Integer addressId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id", insertable = false, updatable = false)
+    private Address address;
+
     private Boolean active;
    /* @Column(name = "create_date")
     @DateTimeFormat(pattern = "yyyy-mm-dd")
@@ -67,41 +71,19 @@ public class Customer {
         this.active = active;
     }
 
-  /*  public LocalDateTime getCreateDate() {
-        return createDate;
+    public Store getStore() {
+        return store;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-*/
-    public Integer getStoreId() {
-        return storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
+    public Address getAddress() {
+        return address;
     }
 
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", storeId=" + storeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", addressId=" + addressId +
-                ", active=" + active +
-                //", createDate=" + createDate +
-                '}';
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
