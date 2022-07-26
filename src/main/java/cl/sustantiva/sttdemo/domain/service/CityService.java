@@ -21,4 +21,5 @@ public class CityService {
     public List<City> getAll(){
         return repository.getAll();
     }
+
 }

@@ -19,7 +19,7 @@
     </header>
     <main>
         <div>
-            <a th:href="@{/customer/new}" class="btn btn-primary">Crear Cliente</a>
+            <a th:href="@{/customerDTO/new}" class="btn btn-primary">Crear Cliente</a>
         </div>
         <table id="customers" class="table">
             <thead>
@@ -34,7 +34,8 @@
                 <tr th:each="city: ${cities}">
                     <th th:text="${city.getCityId()}"></th>
                     <td th:text="${city.getCity()}"></td>
-                    <td th:text="${city.getCountry().getCountry()}"></td>
+                    <td><a th:href="@{/city/all/country/{id}(id=${city.getCountryId()})}" th:text="${city.getCountry().getCountry()}"></a>
+                    </td>
                     <td><a th:href="@{/city/{id}(id=${city.getCityId()})}">editar</a>
                         <a th:href="@{/city/del/{id}(id=${city.getCityId()})}">borrar</a></td>
                 </tr>
@@ -44,7 +45,7 @@
 </div>
 <script>
     $(document).ready( function () {
-    $('#customers').DataTable();
+    <!--$('#customers').DataTable();-->
 } );
 </script>
 <!-- JavaScript Bundle with Popper -->

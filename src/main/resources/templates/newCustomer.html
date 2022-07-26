@@ -16,7 +16,7 @@
         <div th:replace="nav :: menu"></div>
     </header>
     <main>
-        <form th:action="@{/customer/save}" method="post" th:object="${customer}">
+        <form th:action="@{/customerDTO/save}" method="post" th:object="${customerDTO}">
             <!--<input type="hidden" class="form-control" id="customerId" name="customerId">-->
 
             <div class="mb-3">
@@ -42,7 +42,7 @@
 <!--            <div class="mb-3">-->
 <!--                <label for="createDate" class="form-label">Creación</label>-->
 <!--                <input type="date" class="form-control" id="createDate" name="createDate"-->
-<!--                       th:value="${#temporals.format(customer.getCreateDate(), 'yyyy-mm-dd')}">-->
+<!--                       th:value="${#temporals.format(customerDTO.getCreateDate(), 'yyyy-mm-dd')}">-->
 
 <!--            </div>-->
             <div class="col-6">

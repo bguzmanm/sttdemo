@@ -19,7 +19,7 @@
     </header>
     <main>
         <div>
-            <a th:href="@{/customer/new}" class="btn btn-primary">Crear Cliente</a>
+            <a th:href="@{/customerDTO/new}" class="btn btn-primary">Crear Cliente</a>
         </div>
         <table id="customers" class="table">
             <thead>
@@ -34,16 +34,16 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="customer: ${customers}">
-                    <th th:text="${customer.getCustomerId()}"></th>
-                    <td th:text="${customer.getFirstName()}"></td>
-                    <td th:text="${customer.getLastName()}"></td>
-                    <td th:text="${customer.getEmail()}"></td>
-                    <!--<td th:text="${#temporals.format(customer.getCreateDate(), 'dd-mm-yyyy')}"></td>-->
+                <tr th:each="customerDTO: ${customers}">
+                    <th th:text="${customerDTO.getCustomerId()}"></th>
+                    <td th:text="${customerDTO.getFirstName()}"></td>
+                    <td th:text="${customerDTO.getLastName()}"></td>
+                    <td th:text="${customerDTO.getEmail()}"></td>
+                    <!--<td th:text="${#temporals.format(customerDTO.getCreateDate(), 'dd-mm-yyyy')}"></td>-->
                     <td><input type="checkbox" class="form-check-input" id="active" name="active"
-                               th:checked="${customer.isActive()}" readonly></td>
-                    <td><a th:href="@{/customer/{id}(id=${customer.getCustomerId()})}">editar</a>
-                        <a th:href="@{/customer/del/{id}(id=${customer.getCustomerId()})}">borrar</a></td>
+                               th:checked="${customerDTO.isActive()}" readonly></td>
+                    <td><a th:href="@{/customerDTO/{id}(id=${customerDTO.getCustomerId()})}">editar</a>
+                        <a th:href="@{/customerDTO/del/{id}(id=${customerDTO.getCustomerId()})}">borrar</a></td>
                 </tr>
             </tbody>
         </table>

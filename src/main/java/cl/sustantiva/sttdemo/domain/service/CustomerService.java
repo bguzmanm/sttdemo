@@ -25,14 +25,17 @@ public class CustomerService {
     }
 
     public Optional<Customer> getOne(int customerId){
-
         return repository.getOne(customerId);
     }
 
     public Customer save(Customer customer){
         return repository.save(customer);
     }
-    public void delete(int customerId){
-        repository.delete(customerId);
+    public boolean delete(int customerId){
+        return getOne(customerId)
+                .map(customer -> {
+                    repository.delete(customerId);
+                    return true;
+                }).orElse(false);
     }
 }
