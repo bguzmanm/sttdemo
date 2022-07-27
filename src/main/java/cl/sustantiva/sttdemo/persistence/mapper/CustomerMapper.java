@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {StoreMapper.class, AddressMapper.class})
 public interface CustomerMapper {
 
     @Mappings({
@@ -22,8 +22,10 @@ public interface CustomerMapper {
             @Mapping(source = "active", target = "active"),
     })
     CustomerDTO toCustomerDTO(Customer customer);
-    List<CustomerDTO> toCustomers(List<Customer> customers);
+    List<CustomerDTO> toCustomerDTOs(List<Customer> customers);
     
     @InheritInverseConfiguration
+    @Mapping(source = "storeDTO.storeId", target = "storeId")
+    @Mapping(source = "addressDTO.addressId", target = "addressId")
     Customer toCustomer(CustomerDTO customerDTO);
 }

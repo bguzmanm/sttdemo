@@ -1,5 +1,6 @@
 package cl.sustantiva.sttdemo.web.restcontroller;
 
+import cl.sustantiva.sttdemo.domain.dto.CustomerDTO;
 import cl.sustantiva.sttdemo.domain.service.CustomerService;
 import cl.sustantiva.sttdemo.persistence.entity.Customer;
 import org.springframework.http.HttpStatus;
@@ -19,19 +20,19 @@ public class CustomerRestController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Customer>> getAll(){
+    public ResponseEntity<List<CustomerDTO>> getAll(){
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getOne(@PathVariable("id") int customerId){
+    public ResponseEntity<CustomerDTO> getOne(@PathVariable("id") int customerId){
         return service.getOne(customerId)
                 .map(customer -> new ResponseEntity<>(customer, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<Customer> save(@RequestBody Customer customer){
+    public ResponseEntity<CustomerDTO> save(@RequestBody CustomerDTO customer){
         return new ResponseEntity<>(service.save(customer), HttpStatus.OK);
     }
 

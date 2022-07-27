@@ -1,5 +1,6 @@
 package cl.sustantiva.sttdemo.web.controller;
 
+import cl.sustantiva.sttdemo.domain.dto.CustomerDTO;
 import cl.sustantiva.sttdemo.domain.service.CustomerService;
 import cl.sustantiva.sttdemo.persistence.entity.Customer;
 import org.apache.commons.logging.Log;
@@ -37,7 +38,7 @@ public class CustomerController {
     }
 
     @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute Customer customer, Model model){
+    public String saveCustomer(@ModelAttribute CustomerDTO customer, Model model){
         logger.info(customer.toString());
         service.save(customer);
         return "redirect:/customer/all";

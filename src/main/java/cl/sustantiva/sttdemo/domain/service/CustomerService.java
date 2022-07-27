@@ -1,8 +1,7 @@
 package cl.sustantiva.sttdemo.domain.service;
 
-import cl.sustantiva.sttdemo.persistence.entity.Customer;
+import cl.sustantiva.sttdemo.domain.dto.CustomerDTO;
 import cl.sustantiva.sttdemo.persistence.repository.CustomerRepository;
-import cl.sustantiva.sttdemo.web.controller.CustomerController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
@@ -20,15 +19,15 @@ public class CustomerService {
         this.repository = repository;
     }
 
-    public List<Customer> getAll(){
+    public List<CustomerDTO> getAll(){
         return repository.getAll();
     }
 
-    public Optional<Customer> getOne(int customerId){
+    public Optional<CustomerDTO> getOne(int customerId){
         return repository.getOne(customerId);
     }
 
-    public Customer save(Customer customer){
+    public CustomerDTO save(CustomerDTO customer){
         return repository.save(customer);
     }
     public boolean delete(int customerId){
