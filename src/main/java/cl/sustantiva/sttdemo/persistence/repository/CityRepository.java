@@ -21,11 +21,16 @@ public class CityRepository {
     }
 
     public List<City> getByCountry(int countryId){
-        return crudRepository.findByCountryIdOrderByCityDesc(countryId);
+        //return crudRepository.findByCountryIdOrderByCityDesc(countryId);
+        return crudRepository.buscarPorIdDelPais(countryId);
     }
 
     public Optional<City> getCity(int cityId){
         return crudRepository.findById(cityId);
+    }
+
+    public List<City> getCityByName(String name){
+        return crudRepository.filtrandoPorNombre(name);
     }
 
  }

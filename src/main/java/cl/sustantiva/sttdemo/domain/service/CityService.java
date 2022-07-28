@@ -22,4 +22,8 @@ public class CityService {
         return repository.getAll();
     }
 
+    public List<City> getByName(String name){
+        return repository.getCityByName(name);
+    }
+
 }

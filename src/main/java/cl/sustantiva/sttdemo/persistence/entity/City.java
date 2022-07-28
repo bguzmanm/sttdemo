@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "city")
+@NamedQuery(name="City.filtrandoPorNombre", query="Select c from City c where c.city like ?1")
 public class City {
 
     @Id
