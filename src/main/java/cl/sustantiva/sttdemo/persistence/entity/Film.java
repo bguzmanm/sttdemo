@@ -32,8 +32,8 @@ public class Film {
     @Column(name = "special_features")
     private String specialFeatures;
 
-    @OneToMany(mappedBy = "actor")
-    private List<Film> actors;
+    @OneToMany(mappedBy = "film")
+    private List<FilmActor> actors;
 
     public Integer getFilmId() {
         return filmId;
@@ -129,5 +129,13 @@ public class Film {
 
     public void setSpecialFeatures(String specialFeatures) {
         this.specialFeatures = specialFeatures;
+    }
+
+    public List<FilmActor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<FilmActor> actors) {
+        this.actors = actors;
     }
 }

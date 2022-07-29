@@ -1,6 +1,7 @@
 package cl.sustantiva.sttdemo.persistence.repository;
 
 import cl.sustantiva.sttdemo.persistence.crud.StoreCrudRepository;
+import cl.sustantiva.sttdemo.persistence.entity.FilmActor;
 import cl.sustantiva.sttdemo.persistence.entity.Store;
 import org.springframework.stereotype.Repository;
 

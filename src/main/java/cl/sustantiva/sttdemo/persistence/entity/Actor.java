@@ -16,8 +16,6 @@ public class Actor {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany(mappedBy = "film")
-    private List<Film> films;
 
     public Integer getActorId() {
         return actorId;
@@ -43,11 +41,5 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public void hola(){
-        FilmActor fm = new FilmActor();
-
-
-
-    }
 
 }

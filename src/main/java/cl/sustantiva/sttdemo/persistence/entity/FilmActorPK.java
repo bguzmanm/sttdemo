@@ -12,6 +12,14 @@ public class FilmActorPK implements Serializable {
     @Column(name="film_id")
     private Integer filmId;
 
+    public FilmActorPK() {
+    }
+
+    public FilmActorPK(Integer actorId, Integer filmId) {
+        this.actorId = actorId;
+        this.filmId = filmId;
+    }
+
     public Integer getActorId() {
         return actorId;
     }
