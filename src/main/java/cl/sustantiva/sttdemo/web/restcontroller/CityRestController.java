@@ -19,7 +19,6 @@ public class CityRestController {
         this.service = service;
     }
 
-
     @GetMapping("/{name}")
     public List<City> getCityByName(@PathVariable("name") String name){
         return service.getByName(name);
