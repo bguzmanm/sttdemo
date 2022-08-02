@@ -20,7 +20,7 @@ public class CityRepository {
         return (List<City>) crudRepository.findAll();
     }
 
-    public List<City> getByCountry(int countryId){
+    public Optional<List<City>> getByCountry(int countryId){
         //return crudRepository.findByCountryIdOrderByCityDesc(countryId);
         return crudRepository.buscarPorIdDelPais(countryId);
     }
@@ -29,7 +29,7 @@ public class CityRepository {
         return crudRepository.findById(cityId);
     }
 
-    public List<City> getCityByName(String name){
+    public Optional<List<City>> getCityByName(String name){
         return crudRepository.filtrandoPorNombre(name);
     }
 

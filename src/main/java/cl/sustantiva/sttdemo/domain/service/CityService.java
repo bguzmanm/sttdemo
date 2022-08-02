@@ -5,6 +5,7 @@ import cl.sustantiva.sttdemo.persistence.repository.CityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /***
  *
@@ -18,14 +19,14 @@ public class CityService {
         this.repository = repository;
     }
 
-    public List<City> getByCountry(int countryId){
+    public Optional<List<City>> getByCountry(int countryId){
         return repository.getByCountry(countryId);
     }
     public List<City> getAll(){
         return repository.getAll();
     }
 
-    public List<City> getByName(String name){
+    public Optional<List<City>> getByName(String name){
         return repository.getCityByName(name);
     }
 
