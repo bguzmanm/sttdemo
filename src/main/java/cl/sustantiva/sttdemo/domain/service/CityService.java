@@ -1,33 +1,47 @@
 package cl.sustantiva.sttdemo.domain.service;
 
-import cl.sustantiva.sttdemo.persistence.entity.City;
-import cl.sustantiva.sttdemo.persistence.repository.CityRepository;
+
+import cl.sustantiva.sttdemo.domain.dto.CityDTO;
+import cl.sustantiva.sttdemo.domain.repository.CityRepositoryDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-/***
- *
- */
 @Service
 public class CityService {
 
-    private final CityRepository repository;
+    private final CityRepositoryDTO repository;
 
-    public CityService(CityRepository repository) {
+    public CityService(CityRepositoryDTO repository) {
         this.repository = repository;
     }
 
-    public Optional<List<City>> getByCountry(int countryId){
-        return repository.getByCountry(countryId);
+    public Optional<List<CityDTO>> getByName(String name){
+        return repository.getByName(name);
     }
-    public List<City> getAll(){
+
+    public List<CityDTO> getByCountry(int countryId){
+        return repository.getAll();
+    }
+    public List<CityDTO> getAll(){
         return repository.getAll();
     }
 
-    public Optional<List<City>> getByName(String name){
-        return repository.getCityByName(name);
+    public Optional<CityDTO> getCity(int cityId){
+        return repository.getOne(cityId);
     }
 
+    public CityDTO save(CityDTO city){
+        return repository.save(city);
+    }
+
+    public boolean delete(int cityId){
+        return repository.getOne(cityId)
+                .map(city -> {
+                    repository.delete(cityId);
+                    return true;
+                })
+                .orElse(false);
+    }
 }
